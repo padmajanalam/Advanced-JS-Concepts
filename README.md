@@ -75,6 +75,7 @@ There are two different data types:
 	* There are five types of primitive data types in JavaScript.Such as:String, Number, Boolean, Null, Undefined.
 * Non - Primitive data type 
 	* Objects, Arrays.
+
 **Pass by Value:**
 - Primitive type variable like string,number are always pass as pass by value.	
 - If we change the value of a primitive type inside a function, the changes won't effect the varibale in the outer scope.
