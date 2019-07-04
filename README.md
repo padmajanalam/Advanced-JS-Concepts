@@ -1,6 +1,6 @@
 # Advanced-JS-Concepts
 
-### Use Strict ###
+#### Use Strict ####
 
 - Strict mode is a new feature in ECMAScript5 and it allows us to place a program or a function in strict operating context.
 - It will support modern browsers only and older browsers will ignore the strict mode as it is in string format and consider it as a string.
@@ -67,15 +67,15 @@ O/P : returns 2 as eval is not evaluated because of strict mode
 
 ```
 
-### Pass by Value & Pass by Reference ###
+#### Pass by Value & Pass by Reference ####
 
 Before understanding pass by value and pas by reference,we must know the javascript datatypes.
 There are two different data types:
-	- Primitive data type
-		- There are five types of primitive data types in JavaScript.Such as:String, Number, Boolean, Null, Undefined.
-	- Non - Primitive data type 
-		- Objects, Arrays.
-* Pass by Value:
+* Primitive data type
+	* There are five types of primitive data types in JavaScript.Such as:String, Number, Boolean, Null, Undefined.
+* Non - Primitive data type 
+	* Objects, Arrays.
+**Pass by Value:**
 - Primitive type variable like string,number are always pass as pass by value.	
 - If we change the value of a primitive type inside a function, the changes won't effect the varibale in the outer scope.
 - pass by value means passing the `copy of a variable`.
@@ -92,7 +92,7 @@ test(a);	// O/P : 1
 console.log(a); // O/P : 1
 
 ```
-* Pass by reference:
+**Pass by reference:**
 - Javascript passing in an object passes it by reference.When we change the property of the object, then the change will be reflected in the outer scope.
 
 ```
