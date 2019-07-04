@@ -66,14 +66,36 @@ console.log(a);
 O/P : returns 2 as eval is not evaluated because of strict mode
 
 ```
-#### Pass by Value & Pass by Reference ####
+#### Different types in Javascript ####
 
-Before understanding pass by value and pas by reference,we must know the javascript datatypes.
 There are two different data types:
 * Primitive data type
-	* There are five types of primitive data types in JavaScript.Such as:String, Number, Boolean, Null, Undefined.
+	* There are **five types** of primitive data types in JavaScript.
+		* String		// 'JOHN'
+		* Number		// 22
+		* Boolean		// true
+		* Null			// null
+		* Undefined.		// undefined
 * Non - Primitive data type 
-	* Objects, Arrays.
+	* Objects (Arrays comes under object).	// new Object()
+
+To find the type of a variable we have a javascript function **typeof**.
+* typeof(1)		// Number
+* typeof('test')	// string
+* typeof(true) 		// Boolean
+* typeof(undefined)	// undefined
+* typeof(null)		// Object -> incorrectly js reported it as Object which supposed to be a null.
+* typeof({})		// Object
+* typeof([])		// Object
+
+As Javascript is a `dynamic type language` we dont have to mention the data type at the time of variable declaration.
+
+	* String x = 'test' // Wrong. No need to specify the type here.
+By Javascript, we can change the type of the variable dynamically at run time.
+
+#### Pass by Value & Pass by Reference ####
+
+Before understanding pass by value and pas by reference,we must know the javascript datatypes ^.
 
 **Pass by Value:**
 - Primitive type variable like string,number are always pass as pass by value.	
