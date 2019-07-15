@@ -373,6 +373,68 @@ function unique(array) {
 
 console.log(unique(numbers));
 ```
+## Temaplte Strings / Literals##
+In ES5 we use single quote(') or double quote("") to concate string literals.
+In ES6 we have a backticks(` `) to wrap the string literals.
+
+  * let simple = `This is a template literal`;
+
+following are the features of Template strings:
+
+***Multiline string:*** a string that can span multiple lines.
+***String formatting:*** the ability to substitute part of the string for the values of a variable or an expression. This feature is also called string interpolation.
+***HTML escaping:*** the ability to transform a string so that it is safe to include in HTML.
+
+Examples: 
+```let str = `Template literal in ES6`;```
+```
+let msg = `Multiline \n\
+string`;
+console.log(msg);
+//Multiline
+//string
+```
+```
+var {title, exceprt, body, tags} = post;
+ 
+var postHtml = `<article>
+<header>
+    <h1>${title}</h1>
+</header>
+<section>
+    <div>${exceprt}</div>
+    <div>${body}</div>
+</section>
+<footer>
+    <ul>
+      ${tags.map(tag => `<li>${tag}</li>`).join('\n      ')}
+    </ul>
+</footer>`;
+```
+```
+let firstName = 'John',
+    lastName = 'Doe';
+ 
+let greeting = `Hi ${firstName}, ${lastName}`;
+console.log(greeting); // Hi John, Doe
+```
+Any valid javascript expression we can put inside the curly braces {}.
+
+```
+function doubleMessage(number) {
+  return `Your number doubled is ${2 * number}`;
+}
+console.log(doubleMessage(2)); // 'Your number doubled is 4'
+```
+```
+function fullName(firstName, lastName) {
+  return `${firstName} ${lastName}`;
+}
+
+let firstName = "Alex";
+let lastName = "Bob";
+console.log(fullName(firstName,lastName));
+```
 
 ## Examples ##
 ```
