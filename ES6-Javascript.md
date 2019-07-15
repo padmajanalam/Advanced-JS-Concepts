@@ -47,8 +47,11 @@ console.log(areas);//Area of images
 ```
 ### MAP ###
 
+arr.map() function creates a new array with the results of called function for every array element. 
+
 The map() method creates a `new array` with the results of calling a provided function on every element in the calling array.
 make sure return the array in Map method.
+
 ```
 var numbers = [1,2,3,4,5];
 var doubleValue = numbers.map(function(number){
@@ -95,6 +98,7 @@ var speeds = trips.map(function(trip){
 console.log(speeds);
 ```
 ### Filter ###
+arr.filter() is used to create a new array function and this function returns a new array consisting of only those elements that satisfied the `condition of the function`.
 The filter() method creates a new array with all elements that pass the test implemented by the provided function.
 
 ```
@@ -250,6 +254,124 @@ function findWhere(array, criteria) {
     })
 }
 console.log(findWhere(ladders, {height: '20 feet'}));
+```
+### Reduce ###
+
+The reduce() method executes a reducer function (that you provide) on each element of the array, resulting in a `single output value`.
+
+```
+Syntax:
+
+array.reduce(function(finalValue, arrayValue){
+}, Initial Value)
+```
+```
+const array1 = [1, 2, 3, 4];
+const reducer = (accumulator, currentValue) => accumulator + currentValue;
+--------  or  -------------
+const reducer = function(accumulator,currentValue){
+  return accumulator + currentValue;
+}
+// 1 + 2 + 3 + 4
+console.log(array1.reduce(reducer));
+// expected output: 10
+
+// 5 + 1 + 2 + 3 + 4
+console.log(array1.reduce(reducer, 5));
+// expected output: 15
+
+```
+The reducer function takes four arguments:
+
+  * Accumulator (acc)
+  * Current Value (cur)
+  * Current Index (idx)
+  * Source Array (src)
+  
+Reducer function's returned value is assigned to the accumulator, whose value is remembered across each iteration throughout the array and ultimately becomes the final, single resulting value.
+
+The first time the callback is called, accumulator and currentValue can be one of two values. If initialValue is provided in the call to reduce(), then accumulator will be equal to initialValue, and currentValue will be equal to the first value in the array. 
+
+If no initialValue is provided, then accumulator will be equal to the first value in the array, and currentValue will be equal to the second.
+
+```
+var inputs = [10,20,30];
+var test = inputs.reduce(function(sum,input){
+  return sum + input
+},0)
+console.log(test); // 60
+```
+```
+var colors = [
+  {color: 'blue'},
+  {color: 'Red'},
+  {color: 'Green'}
+];
+
+var test = colors.reduce(function(accumlator,currentValue){
+    accumlator.push(currentValue.color);
+    return accumlator;
+},[]);
+
+console.log(test);
+```
+```
+Check Balanced paranthesis => which will give opening and closing paranthesis () , (()), (((()))), )(
+function balancedParans(string){
+  return string.split("").reduce(function(previous,char){
+      if(previous < 0){ return previous;}
+      if(char === '(') return ++previous;
+      if(char === ')') return --previous;
+      return previous;
+  },0)
+}
+
+balancedParans("(())");
+```
+```
+var trips = [{ distance: 34 }, { distance: 12 } , { distance: 1 }];
+
+var totalDistance = trips.reduce(function(acc,currentValue){
+    return acc + currentValue.distance;
+},0);
+
+console.log(totalDistance);
+```
+
+```
+var desks = [
+  { type: 'sitting' },
+  { type: 'standing' },
+  { type: 'sitting' },
+  { type: 'sitting' },
+  { type: 'standing' }
+];
+
+var deskTypes = desks.reduce(function(acc, currentValue) {
+    if(currentValue.type === 'sitting')  {
+      acc.sitting++;
+    }
+    if(currentValue.type === 'standing')  {
+      acc.standing++;
+    }
+    return acc;
+}, { sitting: 0, standing: 0 });
+
+console.log(deskTypes); // will return {'sitting': 3, 'standing':2}
+```
+```
+var numbers = [1,1,2,3,4,4];
+
+function unique(array) {
+  return array.reduce(function(acc,number){
+      if(!acc.includes(number)) {
+          acc.push(number);
+      }
+      return acc;
+  },[])
+}
+
+console.log(unique(numbers));
 ```
 
 ## Examples ##
