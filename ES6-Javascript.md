@@ -94,7 +94,69 @@ var speeds = trips.map(function(trip){
 });
 console.log(speeds);
 ```
+### Filter ###
+The filter() method creates a new array with all elements that pass the test implemented by the provided function.
 
+```
+var words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+const result = words.filter(word => word.length > 6);
+console.log(result);
+// expected output: Array ["exuberant", "destruction", "present"]
+```
+```
+var products = [
+  { name: "apple", type:'fruit', quantity:0, price:1},
+  { name: "Tomato", type:'Veg', quantity:10, price:15},
+  { name: "Melon", type:'fruit', quantity:20, price:20},
+  { name: "Brinjal", type:'Veg', quantity:5, price:10},
+  { name: "Banana", type:'fruit', quantity:5, price:16},
+  { name: "Grapes", type:'fruit', quantity:15, price:45},
+  { name: "Capsicum", type:'Veg', quantity:3, price:9},
+  ];
+  
+var res =   products.filter(function(product){
+    return product.type === 'fruit' && product.quantity >0 && product.price <= 20 
+})
+  
+console.log(res); // returns fruit where quantity > 0 and price < 20.
+```
+#### Relational data ####
+```
+var post = {id:4, title: "New Post"};
+var comments = [
+  {id:1, postID:4,comment:"test1"},
+  {id:2, postID:3,comment:"test post 3"},
+  {id:3, postID:4,comment:"test post 4"},
+  ];
+function postComment(comments,post){  
+  return comments.filter(function(comment){
+    return comment.postID == post.id
+  });
+}
+console.log(postComment(comments,post));
+```
+```
+var numbers = [15, 25, 35, 45, 55, 65, 75, 85, 95];
+var filteredNumbers = numbers.filter(function(number){
+    return number >50
+});
+console.log(filteredNumbers);
+```
+```
+var users = [
+ { id: 1, admin: true },  
+ { id: 2, admin: false },
+ { id: 3, admin: false },
+ { id: 4, admin: false },
+ { id: 5, admin: true },
+];
+
+var filteredUsers = users.filter(function(user){
+    return user.admin === true
+});
+
+console.log(filteredUsers);
+```
 ## Examples ##
 ```
 //fibnocci series
