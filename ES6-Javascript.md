@@ -157,6 +157,101 @@ var filteredUsers = users.filter(function(user){
 
 console.log(filteredUsers);
 ```
+```
+=> to fetch the opposite of the condtion using filter
+
+var numbers = [10,20,30];
+var lessthan = reject(numbers,function(number){
+  return number > 15;
+});
+
+function reject(array, iteratorFunction) {
+ return array.filter(e => !iteratorFunction(e));
+}
+
+console.log(lessthan);  // [10]
+```
+### Find ###
+
+The find() method returns the value of the first element in the array that satisfies the provided testing function. Otherwise undefined is returned.
+
+```
+var array1 = [5, 12, 8, 130, 44];
+
+var found = array1.find(function(element) {
+  return element > 10;
+});
+
+console.log(found);
+// expected output: 12
+```
+
+```
+var names = [
+  {name : 'Zil'},
+  {name : 'Bill'},
+  {name : 'Alex'}
+  ];
+  
+  var test = names.find(function(x){
+    return x.name === 'Alex';
+  })
+  
+console.log(test);
+```
+```
+var posts = [
+  {id:4, title: "New Post"},
+  {id:5, title: "Old Post"}
+];
+var comment = {id:1, postID:4,comment:"test1"};
+function postComment(posts,comment){  
+  return posts.find(function(post){
+    return post.id === comment.postID
+  });
+}
+console.log(postComment(posts,comment));
+```
+```
+var users = [
+  { id: 1, admin: false },
+  { id: 2, admin: false },
+  { id: 3, admin: true }
+];
+
+var admin = users.find(function(user){
+    return user.admin === true
+});
+
+console.log(admin); // to fetch the admin values
+```
+```
+var accounts = [
+  { balance: -10 },
+  { balance: 12 },
+  { balance: 0 }
+];
+
+var account = accounts.find(function(account){
+    return account.balance === 12;
+});
+
+console.log(account);
+```
+```
+var ladders = [
+  {height: '20 feet'},
+  {height: '10 feet'},
+  {height: '30 feet'}
+  ];
+function findWhere(array, criteria) {
+    return array.find(function(ladder){
+        return ladder.height ===  criteria.height
+    })
+}
+console.log(findWhere(ladders, {height: '20 feet'}));
+```
+
 ## Examples ##
 ```
 //fibnocci series
