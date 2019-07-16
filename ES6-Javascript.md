@@ -373,7 +373,7 @@ function unique(array) {
 
 console.log(unique(numbers));
 ```
-## Temaplte Strings / Literals##
+## Temaplte Strings / Literals ##
 In ES5 we use single quote(') or double quote("") to concate string literals.
 In ES6 we have a backticks(` `) to wrap the string literals.
 
@@ -435,7 +435,69 @@ let firstName = "Alex";
 let lastName = "Bob";
 console.log(fullName(firstName,lastName));
 ```
+## Arrow Functions ##
 
+ES6 provides the arrow function with an alternative way to write a shorter syntax compared to the function expression. See the following example.
+```
+ES5:
+var add = function(x,y) {
+  return x + y;
+}
+console.log(add(10,20)); // 30
+```
+```
+ES6:
+var add = (x,y) => {
+  return x + y;
+}
+console.log(add(10,20)); // 30
+```
+```
+If the javascript returns `single JS expression` then no need of return statement.
+Implicit return expression is, whatever the expression after the fatArrow will return automatically.
+var add = (x,y) => x + y;
+console.log(add(10,20)); // 30
+```
+```
+const team = {
+  members : ['Bill', 'Alex'],
+  teamName: 'Super 30',
+  teamSummary: function(){
+    return this.members.map(function(member){
+      // here this will throws us an error this is undefined to fetch teamName property
+      // as this scope has been changed and it is trying to fetch from map iteration.
+      // to avoid this we can bind the callback or cache the this scope into another variable
+      return `${member} is in the team ${this.teamName}`
+    })
+  }
+}
+    1) Bind callback to current scope
+    return this.members.map(function(member){
+      // to avoid this we can bind the callback
+      return `${member} is in the team ${this.teamName}`
+    }.bind(this))
+    
+    2) By caching this into a variable
+    return this.members.map(function(member){
+      var self = this;
+      // cache the this scope into another variable
+      return `${member} is in the team ${self.teamName}`
+    })
+    
+    3) By using Arrow functions will resolve the scope issues
+    // fat arrow functions make use of Lexical this (scope).Here this means team
+    return this.members.map( (member) => {
+      return `${member} is in the team ${this.teamName}`
+    })
+```
+```
+const fibonacci = n => {
+  if (n < 3) return 1;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+};
+
+fibonacci(8);
+```
 ## Examples ##
 ```
 //fibnocci series
