@@ -498,6 +498,63 @@ const fibonacci = n => {
 
 fibonacci(8);
 ```
+## Rest and Spread Operators ##
+ES6 provides a new kind of parameter so-called rest parameter that has a prefix of three dots (...). 
+The rest parameter allows you to represent an indefinite number of arguments as an array.
+```
+function sum(...args) {
+    let total = 0;
+    for (const a of args) {
+        total += a;
+    }
+    return total;
+}
+ 
+sum(1, 2, 3); // 6
+```
+
+ES6 provides a new operator called spread operator that consists three dots (...). The spread operator allows you to spread out elements of an array or a string.
+
+The spread operator allows you to insert another array into the initialized array when you construct an array using the literal form.
+
+```
+let initialChars = ['A', 'B'];
+let chars = [...initialChars, 'C', 'D'];
+console.log(chars); // ["A", "B", "C", "D"]
+```
+
+Also, you can use the spread operator to concatenate two or more arrays:
+```
+let numbers = [1, 2];
+let moreNumbers = [3, 4];
+let allNumbers = [...numbers, ...moreNumbers];
+console.log(allNumbers); // [1, 2, 3, 4]
+```
+
+In addition, you can copy an array instance by using the spread operator.
+```
+let scores = [80, 70, 90];
+let copiedScores = [...scores];
+console.log(copiedScores); // [80, 70, 90]
+```
+
+```
+function product(...numbers) {
+
+  return numbers.reduce(function(acc, number) {
+    return acc * number;
+  }, 1)
+}
+
+console.log(product(1,2,3,4,5,6));
+```
+```
+function unshift(numbers,...alpha) {
+  return [...alpha,...numbers];
+}
+unshift([1,2],'a','b','r');
+```
+
 ## Examples ##
 ```
 //fibnocci series
