@@ -554,6 +554,72 @@ function unshift(numbers,...alpha) {
 }
 unshift([1,2],'a','b','r');
 ```
+## Promises ##
+
+A promise is a placeholder that represents the result of an `asynchronous operation`. ES6 supported the promises by providing the Promise object.
+A promise has three states: 
+    * pending (UnResolved)
+    * fulfilled (Resolved)
+    * Rejected
+
+Each promise starts in the `pending` state which indicates that the asynchronous operation hasn’t completed. A pending promise is considered `unsettled`.
+
+When the asynchronous operation completes, the promise is settled and has one of two possible states:
+
+    * `Fulfilled` indicates that the asynchronous operation has completed successfully.
+    * `Rejected` indicates that the error occurred that in asynchronous operation.
+
+To create a promise, you use the `Promise constructor`. The Promise constructor accepts a function, which is called the `executor`.
+
+The executor accepts two functions named `resolve()` and `reject()`. You call the resolve() function when the executor completed successfully and call the reject() function when the executor failed.
+
+
+```
+let p = new Promise( function(resolve,reject){
+});
+p.then();
+p.catch();
+```
+
+```
+let promise = new Promise( function(resolve,reject){
+  resolve();
+});
+
+promise
+    .then(function(){
+      console.log("resoved successfully");
+     })
+     .then(function(){
+      console.log("resoved successfully");
+     })
+     .catch(function(){
+      console.log("rejected error");
+     });
+
+```
+Consuming functions can be registered (subscribed) using methods .then, .catch and .finally.
+
+```
+let promise = new Promise(function(resolve, reject) {
+  setTimeout(() => resolve("done!"), 1000);
+});
+
+// resolve runs the first function in .then
+promise.then(
+  result => alert(result), // shows "done!" after 1 second
+  error => alert(error) // doesn't run
+);
+```
+Fetch is a helper.fetch() is available in the latest version of Chrome, Firefox, and Opera, but not in IE and Safari. 
+
+```
+fetch("https://jsonplaceholder.typicode.com/posts")
+.then(response => response.json())
+.then(data => console.log(data))
+```
+returns an error status code so any status could above 300 It does not enter the catch case.
+It will catch the error when the network fails.Fetch only hits catch when the network request flat out fails to be issued at all if the request hits.
 
 ## Examples ##
 ```
