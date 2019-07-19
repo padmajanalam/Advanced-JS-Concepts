@@ -621,7 +621,250 @@ fetch("https://jsonplaceholder.typicode.com/posts")
 returns an error status code so any status could above 300 It does not enter the catch case.
 It will catch the error when the network fails.Fetch only hits catch when the network request flat out fails to be issued at all if the request hits.
 
+### JS Interview questions ###
+1.	Difference between undefined and not defined?
+2.	Datatypes in JS?
+3.	Prototypes in JS?
+4.	Inheritance in JS?
+5.	Difference between Var, Let, Const?
+6.	Closures and Hoisting?
+7.	What are web workers?
+8.	What is authentications and authorization?
+9.	Method overloading and overriding?
+10.	Difference between array splice and slice?
+11.	ES6 features?
+12.	Arrow functions.
+13.	Difference between Map and ForEach?
+14.	How to create objects in ES5?
+15.	Lexical Scope?
+16.	Difference between arrow functions and named functions?
+17.	What are meta tags in HTML?
+18.	SetTimeOut and SetTimeInterval?
+19.	Promise and What are the different states in Promise?
+20.	How to access all the key values in an Object?
+21.	Event Bubbling and Event Capturing?
+22.	Spread Operator?
+23.	Structuring and Destructuring in JS?
+24.	How to copy data from one object to another?
+25.	Link in JS?
+26.	Callback hell?
+27.	Scopes in JS?
+
+#### Difference between Null, Undefined, Not defined? ####
+
+| Null        | Undefined           | Not Defined  |
+| ------------- |:-------------:| -----:|
+| Assigning a variable value to null     | Declaring a variable and using without initialization it | In ES6 to declare a variable |
+| Variable value can be re declared and updated    | Can be updated and cannot be re-declared      |   variable have not been declared at all. |
+| Var x = null | var x;   |    - |
+| Typeof null is an object | - |    - |
+
+#### Datatypes in JS? ####
+
+JS has 6 primitive and one complex datatype:
+
+  •	Null
+  •	Undefined
+  •	Boolean
+  •	Number
+  •	String
+  •	Symbol – ES6
+
+  •	Object – Complex DT.
+
+#### Prototypes in JS? ####
+Usually in programming language, we define classes and create an object to those classes. In case of reusing the properties or functionalities of other class, we just need to extend it. Which is called as classical inheritance.
+
+Whereas in JS we use prototypal inheritance.an object can inherit properties from another object.
+
+Inheritance and dunder proto (__proto__):
+
+Suppose you have an object named animal that has a method called walk().
+```
+var animal = {
+    walk: function() {
+        console.log('walking');
+    }
+}
+```
+And another object named bird that has a method named fly().
+```
+var bird = {
+    fly: function() {
+        console.log('flying');
+    }
+}
+```
+Suppose you want the bird object to inherit all properties from the animal object. In this case, you use the dunder proto ( __proto__) property as follows:
+  `bird. __proto__ = animal;`
+
+In this example, the walk() method does not exist in the bird object, therefore, JavaScript engine follows the prototype chain and finds it in the animal object.
+
+  `bird.walk(); // walking`
+```
+var animal = {
+    legs: 4,
+    walk: function() {
+        console.log('walking on ' + this.legs + ' legs');
+    }
+}
+ 
+var bird = {
+    legs: 2,
+    fly: function() {
+        console.log('flying');
+    }
+}
+ 
+bird.__proto__ = animal;
+```
+When you call the walk() method on the bird object
+
+  `bird.walk();`
+
+Internally, JavaScript engine executes it in two steps.
+
+1.	It finds the walk() method in the bird object. Because there’s no walk() method there, it follows the prototype chain to look up the walk() method in the animal object.
+
+2.	It executes the walk() method with the this set to the bird object, not animal object,  so the this.legs property stores the value defined in the bird object.
+
+As a result, the bird object (child object) calls the method of the animal object (parent object), but the this is set to bird object itself. By definition, the bird object inherits all properties from the animal object.
+
+Unfortunately, the dunder proto ( __proto__) has not been standardized until ES6. However, ES6 added the __proto__ to as a standard just for a compatibility issue. Therefore, you should use __proto__ for proof of concept only.
+
+#### Difference between Var, Let, Const? ####
+
+| Var        | Let           | Const  |
+| ------------- |:-------------:| -----:|
+| In JS to declare a variable using Var     | In ES6 to declare a variable | In ES6 to declare a variable |
+| Variable value can be re declared and updated    | Can be updated and cannot be re-declared      |   Cannot be updated value or re-declared.
+Must be ini at the time of declaration. |
+| Declarations are globally/ functional scoped | Block scoped      |    Block scoped |
+| Hoisting of var: variable and functions are moved to the top of their scope before code execution.
+Will return: **Undefined** | Let declarations are hoisted to the top.
+It will return a Reference error.|    We cannot hoist const, because we do initialize the  |
+
+Source: https://dev.to/sarah_chima/var-let-and-const--whats-the-difference-69e
+
+Closures: 
+Closures is an inner function which has access to the variables declared in the outer scope. Which is called as a Lexical scope.
+  
+  Closures has 3 scopes:
+  * Its own scope
+  * Outer scope
+  * Global scope
+
+```
+function showName (firstName, lastName) {
+var nameIntro = "Your name is ";
+    // this inner function has access to the outer function's variables, including the parameter
+function makeFullName () {
+return nameIntro + firstName + " " + lastName;
+}
+
+return makeFullName ();
+}
+showName ("Michael", "Jackson"); // Your name is Michael Jackson
+```
+
+To avoid the side effects of closures loop, we can use IIFE: which will invoke immediately and declare a variable by using LET.
+
+#### Hoisting ####
+
+In Javascript all the variable/function declarations are moved/hoisted to the top of the scope (global/functional/ block).
+
+	```
+  Console.log(test); // undefined 
+	Var test = “ddd”;
+
+
+Variable has been moved to the top and no value assigned, so it returns an undefined value. 
+
+As mentioned above functions are also hoisted to top of the scope.
+
+```
+function hey() {
+console.log('hey ' + myName);
+};
+hey();	// undefined.
+var myName = "Sunil";
+```
+
+#### What about Let and Const?####
+They’re also hoisted — in fact, var, let, const, function and class declarations are hoisted.
+The difference between var, let and const declarations is their initialization.
+
+Instances of var and let can be initialised without a value (and if you try to call it, it will return undefined) 
+while const will throw a Reference error if you try to declare one without assigning it a value at the same time. 
+
+So const myName = 'Sunil' would work, but const myName; myName = 'Sunil'; would not.
+
+If we create using var, it will create a global object In the case of browser it is window object.
+	Window.myName;
+
+If we write using let, it won’t be accessible using window object.
+
+#### Difference between Array splice and slice? ####
+
+Array.slice will return the selected elements based on the index position and it will return a new array and it won’t effect the original array.
+	
+Slice will copy the given part of the array and returns copied part as new array.
+array.slice(from, until);
+
+Array.splice will return an array by adding or removing the elements from the array with the help of index position. This will affect the original array.
+
+array.splice(0, 0, 'a', 'b');	// [a,b,1,2,3];
+
+If Argument(1) is NaN or –ve value , it is treated as if it were 0.
+
+Source: https://www.freecodecamp.org/news/lets-clear-up-the-confusion-around-the-slice-splice-split-methods-in-javascript-8ba3266c29ae/
+
+#### ES6 Features: ####
+
+1.	Let,Var,Cost
+2.	Arrow functions
+3.	Default Parameters
+4.	Rest param
+5.	Spread operator
+6.	Object literals
+7.	Destructuring
+8.	Class 
+9.	Promises
+
+#### Rest Param: ####
+In ES6, Rest param has a prefix of three dots (...)
+It collects all remaining elements into an array.
+function fn(a,b,...args) {
+   //...
+}
+fn(1,2,3,’a’,’b’,’c’);
+
+in the above example ...args is nothing but an indefinite array of the elements [3,’a’,’b’,’c’].
+
+function sum(...args) {
+    return args.filter(e => typeof e === 'number')
+        .reduce((prev, curr)=> prev + curr);
+}
+
+#### Spread Operator:####
+
+Similar to Rest operator we can use prefix (...)
+
+The spread operator allows you to insert another array into the initialized array when you construct an array using the literal form.
+
+```
+let initialChars = ['A', 'B'];
+let chars = [...initialChars, 'C', 'D'];
+console.log(chars); // ["A", "B", "C", "D"];
+```
+
+Spread operator: allows iterables ( arrays / objects / strings ) to be expanded into single arguments/elements.
+```
+const arr = ["Joy", "Wangari", "Warugu"];
+const newArr = ["joykare", ...arr];
+```
 ## Examples ##
+
 ```
 //fibnocci series
 
